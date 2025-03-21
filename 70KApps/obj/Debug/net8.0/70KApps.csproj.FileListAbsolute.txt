@@ -168,5 +168,5 @@ C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\obj\Debug\net8.0\refint\70KApps
 C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\obj\Debug\net8.0\70KApps.pdb
 C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\obj\Debug\net8.0\70KApps.genruntimeconfig.cache
 C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\obj\Debug\net8.0\ref\70KApps.dll
-C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+C:\Users\brand\Documents\GitHub\70K-Apps\70KApps\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

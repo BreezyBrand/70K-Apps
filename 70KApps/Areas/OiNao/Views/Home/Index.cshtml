@@ -1,0 +1,61 @@
+﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoContact>
+@{
+    _70KApps.Areas.OiNao.Models.OiNaoContact initialContact = new _70KApps.Areas.OiNao.Models.OiNaoContact();
+    List<_70KApps.Areas.OiNao.Models.OiNaoContact> contacts = new List<_70KApps.Areas.OiNao.Models.OiNaoContact>();
+    ViewData["Title"] = "Oi Nao";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class=col-12>
+            <h1>Welcome to the Oi Nao!</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-end">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#contactModal">Create New Contact</button>
+        </div>
+        <div class="col-12" id="contactTable">
+            @Html.Partial("_contactTable", contacts);
+        </div>
+        <div class="col-12 text-end">
+            <button type="button" class="btn btn-success" onclick="resetContactTable()">Refresh Contacts</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-lg fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("_ContactForm",initialContact);
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        
+        console.log("Ready!")
+    })
+
+    function resetContactTable(){
+        $.ajax({
+            url: "../OiNao/Home/ResetContactTable",
+            success: function(result){
+                $("#contactTable").html(result);
+            }
+        })
+    }
+</script>

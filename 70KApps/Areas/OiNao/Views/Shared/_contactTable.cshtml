@@ -1,0 +1,66 @@
+﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoContact>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Emails</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var contact in Model.OrderBy(x => x.LastName))
+            {
+                <tr>
+                    <td>
+                        <p>@contact.getDisplayName()</p>
+                    </td>
+                    <td>
+                        <p>@contact.Company</p>
+                    </td>
+                    <td>
+                        @foreach (var email in contact.AssociatedEmails.OrderByDescending(x => x.primary).ThenBy(x => x.emailaddress))
+                        {
+                            @if (email.primary)
+                            {
+                                <span class="ind-primary">@email.emailaddress</span>
+                            }
+                            else
+                            {
+                                <span>@email.emailaddress</span>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @foreach (var cnumber in contact.AssociatedContactNumbers.OrderByDescending(x => x.primary))
+                        {
+                            @if (cnumber.primary)
+                            {
+                                <span class="ind-primary">@cnumber.contactNumber</span>
+                            }
+                            else
+                            {
+                                <span>@cnumber.contactNumber</span>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @if (contact.AssociatedAddresses.Any())
+                        {
+                            <span>@contact.AssociatedAddresses.OrderBy(x => x.type).First().getFormattedAddress()</span>
+                        }
+                    </td>
+                    <td>
+                        <button class="btn btn-primary">Edit</button>
+                        <button class="btn btn-warning">Show</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

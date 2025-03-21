@@ -2,28 +2,27 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using _70KApps.Models;
-using Microsoft.Graph;
 using Microsoft.Identity.Web;
+using _70KApps.Data;
 
 namespace _70KApps.Controllers;
 
 [Authorize]
 public class HomeController : Controller
-{
-    private readonly GraphServiceClient _graphServiceClient;
+{    
     private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger, GraphServiceClient graphServiceClient)
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
     {
         _logger = logger;
-            _graphServiceClient = graphServiceClient;;
+        _context = dbContext;
     }
 
     [AuthorizeForScopes(ScopeKeySection = "MicrosoftGraph:Scopes")]
     public async Task<IActionResult> Index()
     {
-var user = await _graphServiceClient.Me.Request().GetAsync();
-ViewData["GraphApiResult"] = user.DisplayName;
+        //var user = await _graphServiceClient.Me.Request().GetAsync();                
         return View();
     }
 

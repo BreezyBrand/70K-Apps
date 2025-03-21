@@ -91,6 +91,10 @@
             "Microsoft.Identity.Web.UI": {
               "target": "Package",
               "version": "[3.2.2, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.7.1, )"
             }
           },
           "imports": [

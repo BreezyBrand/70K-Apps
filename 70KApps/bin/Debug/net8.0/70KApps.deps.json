@@ -15,7 +15,8 @@
           "Microsoft.Identity.Web": "3.2.2",
           "Microsoft.Identity.Web.DownstreamApi": "3.2.0",
           "Microsoft.Identity.Web.MicrosoftGraph": "3.2.2",
-          "Microsoft.Identity.Web.UI": "3.2.2"
+          "Microsoft.Identity.Web.UI": "3.2.2",
+          "jQuery": "3.7.1"
         },
         "runtime": {
           "70KApps.dll": {}
@@ -92,6 +93,7 @@
           }
         }
       },
+      "jQuery/3.7.1": {},
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.13": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.1.2"
@@ -1649,6 +1651,13 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "jQuery/3.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rF8hnQxmBMlIspf8VN72bALtmIpKx6hKRpUdTOkp/8JzfF8KgNqHut5lOy9kFGvFIStumCqJ+PBxpI9gxpRYfQ==",
+      "path": "jquery/3.7.1",
+      "hashPath": "jquery.3.7.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.13": {
       "type": "package",

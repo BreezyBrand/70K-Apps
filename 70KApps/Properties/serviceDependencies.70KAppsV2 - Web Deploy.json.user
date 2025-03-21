@@ -1,18 +1,43 @@
 {
   "dependencies": {
     "mssql1": {
-      "restored": true,
-      "restoreTime": "2025-03-07T16:30:02.951379Z"
+      "restored": false,
+      "restoreTime": "2025-03-11T01:44:11.6023642Z"
     }
   },
   "parameters": {
+    "70KAppsV2.resourceGroupLocation": {
+      "Name": "70KAppsV2.resourceGroupLocation",
+      "Type": null,
+      "Value": "eastus"
+    },
     "mssql1.subscriptionId": {
       "Name": "mssql1.subscriptionId",
       "Type": "subscription",
       "Value": "c8805359-84f7-4781-a86d-0f95f8748a90"
     },
+    "mssql1.resourceGroupLocation": {
+      "Name": "mssql1.resourceGroupLocation",
+      "Type": "location",
+      "Value": "eastus"
+    },
     "mssql1.resourceGroupName": {
       "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "Pushnayo_group"
+    },
+    "70KAppsV2.resourceName": {
+      "Name": "70KAppsV2.resourceName",
+      "Type": null,
+      "Value": "70KAppsV2"
+    },
+    "70KAppsV2.subscriptionId": {
+      "Name": "70KAppsV2.subscriptionId",
+      "Type": "subscription",
+      "Value": "c8805359-84f7-4781-a86d-0f95f8748a90"
+    },
+    "70KAppsV2.resourceGroupName": {
+      "Name": "70KAppsV2.resourceGroupName",
       "Type": "resourceGroup",
       "Value": "Pushnayo_group"
     },

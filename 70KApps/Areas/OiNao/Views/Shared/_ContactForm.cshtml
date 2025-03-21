@@ -1,0 +1,115 @@
+﻿@model _70KApps.Areas.OiNao.Models.OiNaoContact
+@{
+
+}
+<form asp-area="OiNao" asp-controller="Create" asp-action="postContactForm">
+    <div class="container-fluid" id="ContactForm">
+        <div class="row g-3">
+            <div class="col-2 collapse">
+                <label class="control-label" label-for="ID">ID</label>
+                <input class="form-control" asp-for="@Model.ID" />
+                <label class="control-label" label-for="CreatedBy">Created By</label>
+                <input class="form-control" asp-for="@Model.CreatedBy" />
+                <label class="control-label" label-for="CreateDate">Create Date</label>
+                <input class="form-control" asp-for="@Model.CreateDate" />
+            </div>
+            <div class="col-2">
+                <label class="control-label" label-for="title">Title</label>
+                <input class="form-control" asp-for="@Model.title" />
+            </div>
+            <div class="col-2">
+                <label class="control-label" label-for="FirstName">First Name</label>
+                <input class="form-control" asp-for="@Model.FirstName" />
+            </div>
+            <div class="col-2">
+                <label class="control-label" label-for="MiddleName">Middle Name</label>
+                <input class="form-control" asp-for="@Model.MiddleName" />
+            </div>
+            <div class="col-2">
+                <label class="control-label" label-for="LastName">Last Name</label>
+                <input class="form-control" asp-for="@Model.LastName" />
+            </div>
+            <div class="col-2">
+                <label class="control-label" label-for="suffix">Suffix</label>
+                <input class="form-control" asp-for="@Model.suffix" />
+            </div>
+            <div class="col-4">
+                <label class="control-label" label-for="GivenYomi">Given Yomi</label>
+                <input class="form-control" asp-for="@Model.GivenYomi" />
+            </div>
+            <div class="col-4">
+                <label class="control-label" label-for="SurnameYomi">Surname Yomi</label>
+                <input class="form-control" asp-for="@Model.SurnameYomi" />
+            </div>
+            <div class="col-4">
+                <label class="control-label" label-for="nickname">Nickname</label>
+                <input class="form-control" asp-for="@Model.nickname" />
+            </div>
+            <div class="col-6">
+                <label class="control-label" label-for="Company">Company</label>
+                <input class="form-control" asp-for="@Model.Company" />
+            </div>
+            <div class="col-6">
+                <label class="control-label" label-for="suffix">OfficeLocation</label>
+                <input class="form-control" asp-for="@Model.OfficeLocation" />
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-12 text-end">
+                <button id="btnClear" type="button" class="btn btn-danger">Clear</button>
+                <button id="btnSubmit" type="button" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $("#btnClear").click(function(){
+        $("#ID").val("")
+        $("#title").val("")
+        $("#FirstName").val("")
+        $("#MiddleName").val("")
+        $("#LastName").val("")
+        $("#suffix").val("")
+        $("#nickname").val("")
+        $("#GivenYomi").val("")
+        $("#SurnameYomi").val("")
+        $("#Company").val("")
+        $("#OfficeLocation").val("")
+        $("#CreatedBy").val("")
+        $("#CreateDate").val("")
+
+        $("#btnSubmit").text("Create New")
+    })
+        
+    $("#btnSubmit").click(function(){
+        query_string = "../OiNao/Create/postContactForm/";
+
+        query_string += "" + $("#ID").val();
+        query_string += "?title=" + $("#title").val();
+        query_string += "&FirstName=" +$("#FirstName").val();
+        query_string += "&MiddleName=" +$("#MiddleName").val();
+        query_string += "&LastName=" +$("#LastName").val();
+        query_string += "&suffix=" +$("#suffix").val();
+        query_string += "&nickname=" +$("#nickname").val();
+        query_string += "&GivenYomi=" +$("#GivenYomi").val();
+        query_string += "&SurnameYomi=" +$("#SurnameYomi").val();
+        query_string += "&Company=" +$("#Company").val();
+        query_string += "&OfficeLocation=" +$("#OfficeLocation").val();
+        query_string += "&CreatedBy=" +$("#CreatedBy").val();
+        query_string += "&CreateDate=" +$("#CreateDate").val();
+        
+        $.ajax({
+            url: "../OiNao/Home/ResetContactTable",
+            success: function(result){
+                $("#contactTable").html(result);
+            }
+        })
+
+        if($("#Id").val() !== ""){
+            $("#btnSubmit").text("Update");
+        }
+    })
+
+    console.log("Contact form loaded");
+</script>

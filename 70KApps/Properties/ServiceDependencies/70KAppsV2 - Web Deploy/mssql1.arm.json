@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('70kappsdatabase', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('70KApps_db', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -51,24 +51,23 @@
             {
               "kind": "v12.0",
               "location": "[parameters('resourceLocation')]",
-              "name": "70kappsserverv2",
+              "name": "70kappsdbserver",
               "type": "Microsoft.Sql/servers",
               "apiVersion": "2017-10-01-preview"
             },
             {
               "sku": {
-                "name": "GP_Gen5",
-                "tier": "GeneralPurpose",
-                "family": "Gen5",
-                "capacity": 2
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 10
               },
-              "kind": "v12.0,user,vcore",
+              "kind": "v12.0,user",
               "location": "[parameters('resourceLocation')]",
-              "name": "70kappsserverv2/70kappsdatabase",
+              "name": "70kappsdbserver/70KApps_db",
               "type": "Microsoft.Sql/servers/databases",
               "apiVersion": "2017-10-01-preview",
               "dependsOn": [
-                "70kappsserverv2"
+                "70kappsdbserver"
               ]
             }
           ]
