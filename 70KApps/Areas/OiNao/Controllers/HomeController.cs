@@ -25,7 +25,7 @@ namespace _70KApps.Areas.OiNao.Controllers
                                                     .Include(n => n.AssociatedEmails)
                                                     .ToList();
 
-            return View();
+            return View(contacts);
         }
 
         public IActionResult ResetContactTable()

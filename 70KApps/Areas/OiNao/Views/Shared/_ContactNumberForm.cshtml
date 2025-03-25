@@ -1,1 +1,133 @@
-﻿
+﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoContactNumber>
+@{
+    int count = 1;
+}
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <h4 class="col-12">Contact Numbers</h4>
+        @*As table*@
+        <div>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Primary</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (var cnumber in Model.OrderByDescending(x => x.primary))
+                        {
+                            <tr id="numberBlock_@count">
+                                <td>
+                                    <div class="collapse">
+                                        <input class="form_ID" value="@cnumber.ID" />
+                                        <input class="form_CreatedBy" value="@cnumber.CreatedBy" />
+                                        <input class="form_CreateDate" value="@cnumber.CreateDate" />
+                                    </div>
+                                    <input class="form-control form_ContactNumber" value="@cnumber.contactNumber" />
+                                </td>
+                                <td>
+                                    <select class="form-control form_primary">
+                                        <option value="@cnumber.primary">@cnumber.DisplayPrimary()</option>
+                                        <option value="Y">Yes</option>
+                                        <option value="N">No</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control form_type">
+                                        <option value="@cnumber.type">@cnumber.DisplayType()</option>
+                                        <option value="H">Home Phone</option>
+                                        <option value="C">Cell Phone</option>
+                                        <option value="W">Work Phone</option>
+                                        <option value="F">Fax</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button id="numberButton_@count" type="button" class="btn btn-success updateNumberButton w-100 mb-1">Update</button>
+                                    <button id="numberDeleteButton_@count" type="button" class="btn btn-danger deleteNumberButton w-100">Delete</button>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+                    <tr id="numberBlock_0">
+                        <td>
+                            <div class="collapse">
+                                <input class="form_ID" />
+                                <input class="form_CreatedBy" />
+                                <input class="form_CreateDate" />
+                            </div>
+                            <input class="form-control form_ContactNumber" />
+                        </td>
+                        <td>
+                            <select class="form-control form_primary">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-control form_type">
+                                <option value="H">Home Phone</option>
+                                <option value="C">Cell Phone</option>
+                                <option value="W">Work Phone</option>
+                                <option value="F">Fax</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button id="numberButton_0" type="button" class="btn btn-success newNumberButton w-100">New</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".updateNumberButton").click(function(){
+            var card_id= this.id.split("_")[1]
+            $.ajax({
+                url: "../OiNao/Create/postContactNumberForm/",
+                data: {
+                    ID: $("#numberBlock_"+card_id+ " .form_ID").val(),
+                    OiNaoContactId: $("#ID").val(),
+                    CreatedBy:  $("#numberBlock_"+card_id+ " .form_CreatedBy").val(),
+                    CreateDate:  $("#numberBlock_"+card_id+ " .form_CreateDate").val(),
+                    primary:  $("#numberBlock_"+card_id+ " .form_primary").val(),
+                    contactNumber:  $("#numberBlock_"+card_id+ " .form_ContactNumber").val(),
+                    type:  $("#numberBlock_"+card_id+ " .form_type").val()
+                },
+                success:function(result){
+                    $("#miniFormBlock").html(result)
+                    resetContactTable()
+                }
+            })
+
+        })
+
+        $(".newNumberButton").click(function() {
+            $.ajax({
+                url: "../OiNao/Create/postContactNumberForm/",
+                data: {
+                    ID: $("#numberBlock_0 .form_ID").val(),
+                    OiNaoContactId: $("#ID").val(),
+                    CreatedBy:  $("#numberBlock_0 .form_CreatedBy").val(),
+                    CreateDate:  $("#numberBlock_0 .form_CreateDate").val(),
+                    primary:  $("#numberBlock_0 .form_primary").val(),
+                    contactNumber:  $("#numberBlock_0 .form_ContactNumber").val(),
+                    type:  $("#numberBlock_0 .form_type").val()
+                },
+                success:function(result){
+                    $("#miniFormBlock").html(result)
+                    resetContactTable()
+                }
+            })
+        })
+    })
+</script>

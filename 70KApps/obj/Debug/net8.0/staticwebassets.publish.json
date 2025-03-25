@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "T86HZEuIEDnsw8aPiy0HB5ew9f77W3txE3buf0xP9GE=",
+  "Hash": "zbUNsRm2J6ZDAp18uxAN7Uwq712otgh0KVtTDdfUwzc=",
   "Source": "70KApps",
   "BasePath": "_content/70KApps",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "gc9ejum38p",
-      "Integrity": "0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik=",
+      "Fingerprint": "uwd6p393lb",
+      "Integrity": "7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\obj\\Debug\\net8.0\\scopedcss\\bundle\\70KApps.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "gc9ejum38p",
-      "Integrity": "0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik=",
+      "Fingerprint": "uwd6p393lb",
+      "Integrity": "7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\70KApps.bundle.scp.css"
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "273juhbgd1",
+      "Integrity": "EvdxMu/ac4iEFQxP5OXZn7SPC5nH4o4qoAUYD9+L0nY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "mpyigms19s",
-      "Integrity": "xlexqj9/k3uobVwGfciZcj/eDdooaNgcf4OFLtLUygM=",
+      "Fingerprint": "c8ccvgw1m1",
+      "Integrity": "FDjIDz0LLaWOvUyWYfxy6R8rorcuSwuSrjoSg0CdSUc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
@@ -1331,7 +1331,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1125"
+          "Value": "1141"
         },
         {
           "Name": "Content-Type",
@@ -1339,11 +1339,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik=\""
+          "Value": "\"7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 21 Mar 2025 15:17:02 GMT"
+          "Value": "Mon, 24 Mar 2025 13:11:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1353,97 +1353,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik="
-        }
-      ]
-    },
-    {
-      "Route": "70KApps.gc9ejum38p.bundle.scp.css",
-      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\70KApps.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1125"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 21 Mar 2025 15:17:02 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "gc9ejum38p"
-        },
-        {
-          "Name": "label",
-          "Value": "70KApps.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik="
-        }
-      ]
-    },
-    {
-      "Route": "70KApps.gc9ejum38p.styles.css",
-      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\obj\\Debug\\net8.0\\scopedcss\\bundle\\70KApps.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1125"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 21 Mar 2025 15:17:02 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "gc9ejum38p"
-        },
-        {
-          "Name": "label",
-          "Value": "70KApps.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik="
+          "Value": "sha256-7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA="
         }
       ]
     },
@@ -1458,7 +1368,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1125"
+          "Value": "1141"
         },
         {
           "Name": "Content-Type",
@@ -1466,11 +1376,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik=\""
+          "Value": "\"7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 21 Mar 2025 15:17:02 GMT"
+          "Value": "Mon, 24 Mar 2025 13:11:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1480,13 +1390,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0HHycg1GHeQKrbMKfR/w7Xz+UXW8XR8eGvht/J2oWik="
+          "Value": "sha256-7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA="
         }
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\wwwroot\\css\\site.css",
+      "Route": "70KApps.uwd6p393lb.bundle.scp.css",
+      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\70KApps.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1495,7 +1405,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "1141"
         },
         {
           "Name": "Content-Type",
@@ -1503,11 +1413,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 16:23:43 GMT"
+          "Value": "Mon, 24 Mar 2025 13:11:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1517,7 +1427,97 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "uwd6p393lb"
+        },
+        {
+          "Name": "label",
+          "Value": "70KApps.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA="
+        }
+      ]
+    },
+    {
+      "Route": "70KApps.uwd6p393lb.styles.css",
+      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\obj\\Debug\\net8.0\\scopedcss\\bundle\\70KApps.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1141"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 24 Mar 2025 13:11:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uwd6p393lb"
+        },
+        {
+          "Name": "label",
+          "Value": "70KApps.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7oAYhhFPJ6k/4zWtESNUU8gQKHwK+BB855yNj5z0HLA="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.273juhbgd1.css",
+      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1937"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EvdxMu/ac4iEFQxP5OXZn7SPC5nH4o4qoAUYD9+L0nY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 24 Mar 2025 13:31:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "273juhbgd1"
         },
         {
           "Name": "label",
@@ -1525,7 +1525,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-EvdxMu/ac4iEFQxP5OXZn7SPC5nH4o4qoAUYD9+L0nY="
         }
       ]
     },
@@ -1540,7 +1540,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "1937"
         },
         {
           "Name": "Content-Type",
@@ -1548,11 +1548,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"EvdxMu/ac4iEFQxP5OXZn7SPC5nH4o4qoAUYD9+L0nY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 16:23:43 GMT"
+          "Value": "Mon, 24 Mar 2025 13:31:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1562,7 +1562,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-EvdxMu/ac4iEFQxP5OXZn7SPC5nH4o4qoAUYD9+L0nY="
         }
       ]
     },
@@ -1731,6 +1731,51 @@
       ]
     },
     {
+      "Route": "lib/bootstrap/dist/css/bootstrap.c8ccvgw1m1.css",
+      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "204137"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FDjIDz0LLaWOvUyWYfxy6R8rorcuSwuSrjoSg0CdSUc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 24 Mar 2025 13:16:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c8ccvgw1m1"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FDjIDz0LLaWOvUyWYfxy6R8rorcuSwuSrjoSg0CdSUc="
+        }
+      ]
+    },
+    {
       "Route": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "Selectors": [],
@@ -1741,7 +1786,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "204136"
+          "Value": "204137"
         },
         {
           "Name": "Content-Type",
@@ -1749,11 +1794,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xlexqj9/k3uobVwGfciZcj/eDdooaNgcf4OFLtLUygM=\""
+          "Value": "\"FDjIDz0LLaWOvUyWYfxy6R8rorcuSwuSrjoSg0CdSUc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 16:23:43 GMT"
+          "Value": "Mon, 24 Mar 2025 13:16:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1763,7 +1808,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xlexqj9/k3uobVwGfciZcj/eDdooaNgcf4OFLtLUygM="
+          "Value": "sha256-FDjIDz0LLaWOvUyWYfxy6R8rorcuSwuSrjoSg0CdSUc="
         }
       ]
     },
@@ -2010,51 +2055,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
-        }
-      ]
-    },
-    {
-      "Route": "lib/bootstrap/dist/css/bootstrap.mpyigms19s.css",
-      "AssetFile": "C:\\Users\\brand\\Documents\\GitHub\\70K-Apps\\70KApps\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "204136"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xlexqj9/k3uobVwGfciZcj/eDdooaNgcf4OFLtLUygM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 07 Mar 2025 16:23:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "mpyigms19s"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/bootstrap/dist/css/bootstrap.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-xlexqj9/k3uobVwGfciZcj/eDdooaNgcf4OFLtLUygM="
         }
       ]
     },

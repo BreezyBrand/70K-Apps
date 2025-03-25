@@ -3,9 +3,11 @@ using _70KApps.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Graph;
+using System.Net;
 
 namespace _70KApps.Areas.OiNao.Controllers
 {
+    [Area("OiNao")]
     public class CreateController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -17,36 +19,42 @@ namespace _70KApps.Areas.OiNao.Controllers
             _context = dbContext;
         }
 
-        [HttpGet]
-        public IActionResult getContactForm(int? contactId)
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+
+        public IActionResult getContactForm(int? Id)
         {
             OiNaoContact contact = new OiNaoContact();
-            if (contactId.HasValue)
+            if (Id.HasValue)
             {
-                contact = _context.OiNaoContacts.Find(contactId);
-                contact.AssociatedAddresses = _context.OiNaoAddresses.Where(x => x.OiNaoContactID.Equals(contactId)).ToList();
-                contact.AssociatedContactNumbers = _context.OiNaoContactNumbers.Where(x => x.OiNaoContactID.Equals(contactId)).ToList();
-                contact.AssociatedEmails = _context.OiNaoEmails.Where(x => x.OiNaoContactID.Equals(contactId)).ToList();
-                contact.AssociatedContacts = _context.OiNaoRelationships.Where(x => x.OiNaoContactA.Equals(contactId)).ToList();
+                contact = _context.OiNaoContacts.Find(Id);
+                contact.AssociatedAddresses = _context.OiNaoAddresses.Where(x => x.OiNaoContactID.Equals(Id)).ToList();
+                contact.AssociatedContactNumbers = _context.OiNaoContactNumbers.Where(x => x.OiNaoContactID.Equals(Id)).ToList();
+                contact.AssociatedEmails = _context.OiNaoEmails.Where(x => x.OiNaoContactID.Equals(Id)).ToList();
             }
             return PartialView("_ContactForm", contact);
         }
 
-        [HttpPost]
+
         public IActionResult postContactForm(OiNaoContact contact)
         {
-            if (contact.ID.Equals(null))
+            if (contact.ID.Equals(0))
             {
                 contact.CreateDate = DateTime.Now;
                 contact.CreatedBy = User.Identity.Name;
                 contact.UpdateDate = DateTime.Now;
                 contact.UpdatedBy = User.Identity.Name;
+                contact.reinitialize();
                 _context.OiNaoContacts.Add(contact);
             }
             else
             {
                 contact.UpdateDate = DateTime.Now;
                 contact.UpdatedBy = User.Identity.Name;
+                contact.reinitialize();
                 _context.OiNaoContacts.Update(contact);
             }
             _context.SaveChanges();
@@ -54,69 +62,128 @@ namespace _70KApps.Areas.OiNao.Controllers
             contact.AssociatedAddresses = _context.OiNaoAddresses.Where(x => x.OiNaoContactID.Equals(contact.ID)).ToList();
             contact.AssociatedContactNumbers = _context.OiNaoContactNumbers.Where(x => x.OiNaoContactID.Equals(contact.ID)).ToList();
             contact.AssociatedEmails = _context.OiNaoEmails.Where(x => x.OiNaoContactID.Equals(contact.ID)).ToList();
-            contact.AssociatedContacts = _context.OiNaoRelationships.Where(x => x.OiNaoContactA.Equals(contact.ID)).ToList();
 
             return PartialView("_ContactForm", contact);
         }
 
-        [HttpGet]
-        public IActionResult getEmailForm()
+
+        public IActionResult getEmailForm(int Id)
         {
-            OiNaoEmail email = new OiNaoEmail();
-            return PartialView("_EmailForm", email);
+            List<OiNaoEmail> emails = _context.OiNaoEmails.Where(x => x.OiNaoContactID.Equals(Id)).ToList();
+            return PartialView("_EmailForm", emails);
         }
 
-        [HttpPost]
+
         public IActionResult postEmailForm(OiNaoEmail email)
         {
-            _context.OiNaoEmails.Add(email);
+            if (email.ID.Equals(0))
+            {
+                email.CreateDate = DateTime.Now;
+                email.CreatedBy = User.Identity.Name;
+                email.UpdateDate = DateTime.Now;
+                email.UpdatedBy = User.Identity.Name;
+                _context.OiNaoEmails.Add(email);
+            }
+            else
+            {
+                email.UpdateDate = DateTime.Now;
+                email.UpdatedBy = User.Identity.Name;
+                _context.OiNaoEmails.Update(email);
+            }
+            
             _context.SaveChanges();
-            return PartialView("_EmailForm", email);
+            List<OiNaoEmail> emails = _context.OiNaoEmails.Where(x => x.OiNaoContactID.Equals(email.OiNaoContactID)).ToList();
+
+            return PartialView("_EmailForm", emails);
         }
 
-        [HttpGet]
-        public IActionResult getContactNumberForm()
+
+        public IActionResult getContactNumberForm(int id)
         {
-            OiNaoContactNumber cnumber = new OiNaoContactNumber();
-            return PartialView("_ContactNumberForm", cnumber);
+            List<OiNaoContactNumber> cnumbers = _context.OiNaoContactNumbers.Where(x => x.OiNaoContactID.Equals(id)).ToList();
+            return PartialView("_ContactNumberForm", cnumbers);
         }
 
-        [HttpPost]
+
         public IActionResult postContactNumberForm(OiNaoContactNumber cnumber)
         {
-            _context.OiNaoContactNumbers.Add(cnumber);
+            if (cnumber.ID.Equals(0))
+            {
+                cnumber.CreateDate = DateTime.Now;
+                cnumber.CreatedBy = User.Identity.Name;
+                cnumber.UpdateDate = DateTime.Now;
+                cnumber.UpdatedBy = User.Identity.Name;
+                _context.OiNaoContactNumbers.Add(cnumber);
+            }
+            else
+            {
+                cnumber.UpdateDate = DateTime.Now;
+                cnumber.UpdatedBy = User.Identity.Name;
+                _context.OiNaoContactNumbers.Update(cnumber);
+            }
             _context.SaveChanges();
-            return PartialView("_EmailForm", cnumber);
+            List<OiNaoContactNumber> cnumbers = _context.OiNaoContactNumbers.Where(x => x.OiNaoContactID.Equals(cnumber.OiNaoContactID)).ToList();
+            return PartialView("_ContactNumberForm", cnumbers);
         }
 
-        [HttpGet]
-        public IActionResult getAddressForm()
+
+        public IActionResult getAddressForm(int Id)
         {
-            OiNaoAddress address = new OiNaoAddress();
-            return PartialView("_AddressForm", address);
+            List<OiNaoAddress> addresses = _context.OiNaoAddresses.Where(x => x.OiNaoContactID.Equals(Id)).ToList();
+            return PartialView("_AddressForm", addresses);
         }
 
-        [HttpPost]
+
         public IActionResult postAddressForm(OiNaoAddress address)
         {
-            _context.OiNaoAddresses.Add(address);
+            if (address.ID.Equals(0))
+            {
+                address.CreateDate = DateTime.Now;
+                address.CreatedBy = User.Identity.Name;
+                address.UpdateDate = DateTime.Now;
+                address.UpdatedBy = User.Identity.Name;
+                address.reinitialize();
+                _context.OiNaoAddresses.Add(address);
+            }
+            else
+            {
+                address.UpdateDate = DateTime.Now;
+                address.UpdatedBy = User.Identity.Name;
+                address.reinitialize();
+                _context.OiNaoAddresses.Update(address);
+            }
             _context.SaveChanges();
-            return PartialView("AddressForm", address);
+            List<OiNaoAddress> addresses = _context.OiNaoAddresses.Where(x => x.OiNaoContactID.Equals(address.OiNaoContactID)).ToList();
+            return PartialView("_AddressForm", addresses);
         }
 
-        [HttpGet]
+
         public IActionResult getRelationshipForm()
         {
-            OiNaoRelationship relationship = new OiNaoRelationship();
-            return PartialView("_RelationshipForm", relationship);
+            List<OiNaoRelationship> relationships = new List<OiNaoRelationship>();
+            return PartialView("_RelationshipForm", relationships);
         }
 
-        [HttpPost]
+
         public IActionResult postRelationshipForm(OiNaoRelationship relationship)
         {
-            _context.OiNaoRelationships.Add(relationship);
+            if (relationship.ID.Equals(0))
+            {
+                relationship.CreateDate = DateTime.Now;
+                relationship.CreatedBy = User.Identity.Name;
+                relationship.UpdateDate = DateTime.Now;
+                relationship.UpdatedBy = User.Identity.Name;
+                _context.OiNaoRelationships.Add(relationship);
+            }
+            else
+            {
+                relationship.UpdateDate = DateTime.Now;
+                relationship.UpdatedBy = User.Identity.Name;
+                _context.OiNaoRelationships.Update(relationship);
+            }
             _context.SaveChanges();
-            return PartialView("_RelationshipForm", relationship);
+            List<OiNaoRelationship> relationships = new List<OiNaoRelationship>();
+            return PartialView("_RelationshipForm", relationships);
         }
     }
 }

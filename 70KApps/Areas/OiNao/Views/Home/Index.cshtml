@@ -1,7 +1,6 @@
 ﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoContact>
 @{
-    _70KApps.Areas.OiNao.Models.OiNaoContact initialContact = new _70KApps.Areas.OiNao.Models.OiNaoContact();
-    List<_70KApps.Areas.OiNao.Models.OiNaoContact> contacts = new List<_70KApps.Areas.OiNao.Models.OiNaoContact>();
+    _70KApps.Areas.OiNao.Models.OiNaoContact initialContact = new _70KApps.Areas.OiNao.Models.OiNaoContact();    
     ViewData["Title"] = "Oi Nao";
 }
 
@@ -11,30 +10,35 @@
             <h1>Welcome to the Oi Nao!</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 text-end">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#contactModal">Create New Contact</button>
+    <div class="row g-2">
+        <div class="col-9">
+            <input id="contactTableSearch" class="form-control" placeholder="Search..." />
         </div>
+        <div class="col-3 text-end">            
+            <button id="createNewButton" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#contactModal">Create New Contact</button>
+        </div>
+        <hr />
         <div class="col-12" id="contactTable">
-            @Html.Partial("_contactTable", contacts);
+            @Html.Partial("_contactTable", Model)
         </div>
+        <hr />
         <div class="col-12 text-end">
             <button type="button" class="btn btn-success" onclick="resetContactTable()">Refresh Contacts</button>
         </div>
     </div>
 </div>
 
-<div class="modal modal-lg fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Manage Contact</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                @Html.Partial("_ContactForm",initialContact);
+            <div class="modal-body" id="formModal">
+                @Html.Partial("_ContactForm",initialContact)
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                
@@ -46,7 +50,33 @@
 
 <script>
     $(document).ready(function(){
-        
+        $("#createNewButton").click(function(){
+            $("#btnClear").click()
+        })
+
+        $("#contactTableSearch").keyup(function(){
+            var search_val = $(this).val();
+            console.log(search_val)
+            if(search_val === ""){
+                $("#OiNaoContactTable tbody tr").removeClass("collapse")
+                console.log("Equals empty")
+                return;
+
+            } else {
+                $("#OiNaoContactTable tbody tr").each(function(){                   
+
+                    if($(this).html().indexOf(search_val)>0){
+                        console.log($(this).html().indexOf(search_val))
+                        $(this).removeClass("collapse")
+                    } else {
+                        $(this).addClass("collapse")
+                    }
+
+                })
+            }            
+
+        })
+
         console.log("Ready!")
     })
 

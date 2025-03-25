@@ -1,13 +1,13 @@
 ﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoContact>
 
-<table class="table table-responsive">
+<table id="OiNaoContactTable" class="table table-responsive">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Company</th>
-            <th>Emails</th>
-            <th>Phone</th>
-            <th>Address</th>
+            <th class="d-xs-none d-sm-none d-md-none d-lg-table-cell">Company</th>
+            <th class="d-xs-none d-sm-none d-md-none d-lg-table-cell">Emails</th>
+            <th class="d-xs-none d-sm-none d-md-none d-lg-table-cell">Phone</th>
+            <th class="d-xs-none d-sm-none d-md-none d-lg-table-cell">Address</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,49 +18,90 @@
             {
                 <tr>
                     <td>
-                        <p>@contact.getDisplayName()</p>
+                        <p>
+                            @contact.FirstName <br />
+                            @contact.LastName
+                        </p>
                     </td>
-                    <td>
+                    <td class="d-xs-none d-sm-none d-md-none d-lg-table-cell">
                         <p>@contact.Company</p>
                     </td>
-                    <td>
+                    <td class="d-xs-none d-sm-none d-md-none d-lg-table-cell">
                         @foreach (var email in contact.AssociatedEmails.OrderByDescending(x => x.primary).ThenBy(x => x.emailaddress))
                         {
-                            @if (email.primary)
+                            @if (email.primary.Equals("Y"))
                             {
-                                <span class="ind-primary">@email.emailaddress</span>
+                                <p class="ind-primary w-100">@email.emailaddress</p>
                             }
                             else
                             {
-                                <span>@email.emailaddress</span>
+                                <p class="w-100">@email.emailaddress</p>
                             }
                         }
                     </td>
-                    <td>
+                    <td class="d-xs-none d-md-none d-lg-table-cell">
                         @foreach (var cnumber in contact.AssociatedContactNumbers.OrderByDescending(x => x.primary))
                         {
-                            @if (cnumber.primary)
+                            @if (cnumber.primary.Equals("Y"))
                             {
-                                <span class="ind-primary">@cnumber.contactNumber</span>
+                                <p class="ind-primary w-100">@cnumber.contactNumber</p>
                             }
                             else
                             {
-                                <span>@cnumber.contactNumber</span>
+                                <p class="w-100">@cnumber.contactNumber</p>
                             }
                         }
                     </td>
-                    <td>
+                    <td class="d-xs-none d-md-none d-lg-table-cell">
                         @if (contact.AssociatedAddresses.Any())
                         {
-                            <span>@contact.AssociatedAddresses.OrderBy(x => x.type).First().getFormattedAddress()</span>
+                            <p>
+                                @contact.AssociatedAddresses.OrderBy(x => x.type).First().getFormattedAddress("A")
+                                <br />
+                                @contact.AssociatedAddresses.OrderBy(x => x.type).First().getFormattedAddress("B")
+                            </p>
                         }
                     </td>
-                    <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-warning">Show</button>
+                    <td class="container" style="max-width:10%;">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" onclick="openContact(@contact.ID)">Edit</button>
+                            </div>
+                            <div class="col-5 collapse">
+                                <button class="btn btn-warning w-100" onclick="showContact(@contact.ID)" disabled>Show</button>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             }
         }
     </tbody>
 </table>
+<script>
+    $(document).ready(function(){
+
+    })
+
+    function openContact(id){
+        $("#btnClear").click()
+
+        $.ajax({
+                url: "../OiNao/Create/getContactForm/"+id,
+                success: function(result){
+                    $("#formModal").html(result);
+                    if($("#Id").val() !== ""){
+                        $("#btnSubmit").text("Update");
+                    }
+                    $("#contactModal").modal("show")
+                },
+                erorr: function(result){
+                    console.log(result);
+                }
+            })
+
+    }
+
+    function showContact(){
+
+    }
+</script>

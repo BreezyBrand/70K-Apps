@@ -1,1 +1,201 @@
-﻿
+﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoAddress>
+@{
+    int count = 1;
+}
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <h4 class="col-12">Associated Addresses</h4>
+        <div>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (var address in Model)
+                        {
+                            <tr id="addressBlock_@count">
+                                <td class="container-fluid" style="max-width:80%;">
+                                    <div class="row g-3">
+                                        <div class="collapse">
+                                            <input class="form_ID" value="@address.ID" />
+                                            <input class="form_CreatedBy" value="@address.CreatedBy" />
+                                            <input class="form_CreateDate" value="@address.CreateDate" />
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>Street 1</label>
+                                            <input class="form_street1 form-control" placeholder="Street 1" value="@address.Street1">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>Street 2</label>
+                                            <input class="form_street2 form-control" placeholder="Street 2" value="@address.Street2">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>City</label>
+                                            <input class="form_city form-control" placeholder="City" value="@address.City">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>State</label>
+                                            <input class="form_state form-control" placeholder="State" value="@address.State">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>Country</label>
+                                            <input class="form_country form-control" placeholder="Country" value="@address.Country">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>Postal Code</label>
+                                            <input class="form_postalcode form-control" placeholder="Postal Code" value="@address.PostalCode">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <label>Type</label>
+                                            <select class="form_type form-control" placeholder="Type">
+                                                <option>@address.type</option>
+                                                <option>Home</option>
+                                                <option>Office</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button id="addressButton_@count" type="button" class="btn btn-success updateaddressButton w-100 mb-1">Update</button>
+                                    <button id="addressDeleteButton_@count" type="button" class="btn btn-danger deleteaddressButton w-100">Delete</button>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+                    <tr id="addressBlock_0">
+                        <td class="container-fluid" style="max-width:80%;">
+                            <div class="row g-3">
+                                <div class="collapse">
+                                    <input class="form_ID" />
+                                    <input class="form_CreatedBy" />
+                                    <input class="form_CreateDate" />
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>Street 1</label>
+                                    <input class="form_street1 form-control" placeholder="Street 1">
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>Street 2</label>
+                                    <input class="form_street2 form-control" placeholder="Street 2">
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>City</label>
+                                    <input class="form_city form-control" placeholder="City">
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>State</label>
+                                    <input class="form_state form-control" placeholder="State">
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>Country</label>
+                                    <input class="form_country form-control" placeholder="Country">
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>Postal Code</label>
+                                    <input class="form_postalcode form-control" placeholder="Postal Code">
+                                </div>
+                                <div class="col-xl-3 col-lg-12">
+                                    <label>Type</label>
+                                    <select class="form_type form-control" placeholder="Type">
+                                        <option>Home</option>
+                                        <option>Office</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button id="addressButton_@count" type="button" class="btn btn-success newaddressButton w-100">Add New</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".updateaddressButton").click(function(){
+            var card_id= this.id.split("_")[1]
+            $.ajax({
+                url: "../OiNao/Create/postaddressForm/",
+                data: {
+                    ID: $("#addressBlock_"+card_id+ " .form_ID").val(),
+                    OiNaoContactId: $("#ID").val(),
+                    CreatedBy:  $("#addressBlock_"+card_id+ " .form_CreatedBy").val(),
+                    CreateDate:  $("#addressBlock_"+card_id+ " .form_CreateDate").val(),
+                    Street1:  $("#addressBlock_"+card_id+ " .form_street1").val(),
+                    Street2:  $("#addressBlock_"+card_id+ " .form_street2").val(),
+                    City:  $("#addressBlock_"+card_id+ " .form_city").val(),
+                    State:  $("#addressBlock_"+card_id+ " .form_state").val(),
+                    PostalCode:  $("#addressBlock_"+card_id+ " .form_postalcode").val(),
+                    Country:  $("#addressBlock_"+card_id+ " .form_country").val(),
+                    type:  $("#addressBlock_"+card_id+ " .form_type").val()
+                },
+                success:function(result){
+                    $("#miniFormBlock").html(result)
+                    resetContactTable()
+                }
+            })
+
+        })
+
+        $(".newaddressButton").click(function() {
+            var $ID= $("#addressBlock_0 .form_ID").val();
+            var $OiNaoContactId= $("#ID").val();
+            var $CreatedBy=  $("#addressBlock_0 .form_CreatedBy").val();
+            var $CreateDate=  $("#addressBlock_0 .form_CreateDate").val();
+            var $Street1=  $("#addressBlock_0 .form_street1").val();
+            var $Street2=  $("#addressBlock_0 .form_street2").val();
+            var $City=  $("#addressBlock_0 .form_city").val();
+            var $State=  $("#addressBlock_0 .form_state").val();
+            var $PostalCode=  $("#addressBlock_0 .form_postalcode").val();
+            var $Country=  $("#addressBlock_0 .form_country").val();
+            var $type=  $("#addressBlock_0 .form_type").val();
+
+            console.log({
+                ID: $ID,
+                OiNaoContactId: $OiNaoContactId,
+                CreatedBy:  $CreatedBy,
+                CreateDate:  $CreateDate,
+                Street1:  $Street1,
+                Street2:  $Street2,
+                City:  $City,
+                State:  $State,
+                PostalCode:  $PostalCode,
+                Country:  $Country,
+                type:  $type
+            })
+
+            $.ajax({
+                url: "../OiNao/Create/postaddressForm/",
+                data: {
+                    ID: $ID,
+                    OiNaoContactId: $OiNaoContactId,
+                    CreatedBy:  $CreatedBy,
+                    CreateDate:  $CreateDate,
+                    Street1:  $Street1,
+                    Street2:  $Street2,
+                    City:  $City,
+                    State:  $State,
+                    PostalCode:  $PostalCode,
+                    Country:  $Country,
+                    type:  $type
+                },
+                success:function(result){
+                    $("#miniFormBlock").html(result)
+                    resetContactTable()
+                }
+            })
+        })
+    })
+</script>

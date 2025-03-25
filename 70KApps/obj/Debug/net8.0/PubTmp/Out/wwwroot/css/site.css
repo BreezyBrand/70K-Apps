@@ -18,5 +18,63 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: RGBA(143, 46, 34, 0.5);
 }
+
+footer {
+    flex-shrink:0;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100vw;
+    min-height:5%;
+}
+
+.navbar-brandColor {
+    background: RGBA(143, 46, 34, 1);
+}
+
+.navbar-brandColor .navbar-brand {
+    color: white;
+}
+
+    .navbar-brandColor .navbar-brand:hover, .navbar-brandColor .navbar-brand:focus {
+        color: white;
+    }
+
+    .navbar-brandColor .navbar-nav .nav-link {
+        color: white;
+    }
+
+        .navbar-brandColor .navbar-nav .nav-link:hover, .navbar-brandColor .navbar-nav .nav-link:focus {
+            color: white;
+        }
+
+        .navbar-brandColor .navbar-nav .nav-link.disabled {
+            color: white;
+        }
+
+        .navbar-brandColor .navbar-nav .show > .nav-link,
+        .navbar-brandColor .navbar-nav .nav-link.active {
+            color: white;
+        }
+
+    .navbar-brandColor .navbar-toggler {
+        color: white;
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+.navbar-brandColor .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+    .navbar-brandColor .navbar-text {
+        color: white;
+    }
+
+        .navbar-brandColor .navbar-text a,
+        .navbar-brandColor .navbar-text a:hover,
+        .navbar-brandColor .navbar-text a:focus {
+            color: white;
+        }

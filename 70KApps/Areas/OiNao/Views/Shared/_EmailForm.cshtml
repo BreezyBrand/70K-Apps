@@ -1,1 +1,186 @@
-﻿
+﻿@model List<_70KApps.Areas.OiNao.Models.OiNaoEmail>
+@{
+    int count = 1;
+}
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <h4 class="col-12">Associated Emails</h4>
+        @*As Cards*@
+        <div class="collapse">
+            @if (Model.Any())
+            {
+                @foreach (var email in Model.OrderByDescending(x => x.primary))
+                {
+                    <div class="editCard col-6" id="emailBlock_@count">
+                        <div class="collapse">
+                            <input class="form_ID" value="@email.ID" />
+                            <input class="form_CreatedBy" value="@email.CreatedBy" />
+                            <input class="form_CreateDate" value="@email.CreateDate" />
+                        </div>
+                        <div>
+                            <label class="form-label">Email Address</label>
+                            <input class="form_Email form-control" value="@email.emailaddress">
+                            <label class="form-label">Primary</label>
+                            <select class="form_primary form-control" value="@email.primary">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select>
+                            <label class="form-label">Type</label>
+                            <select class="form_type form-control" value="@email.type">
+                                <option value="W">Work</option>
+                                <option value="P">Personal</option>
+                            </select>
+                            <br />
+                            <button id="emailButton_@count" type="button" class="btn btn-success updateEmailButton" onclick="updateEmail(@count)">Update</button>
+                        </div>
+                    </div>
+
+                    count++;
+                }
+            }
+            <div class="editCard col-6" id="emailBlock_0">
+                <div class="collapse">
+                    <input class="form_ID" />
+                    <input class="form_CreatedBy" />
+                    <input class="form_CreateDate" />
+                </div>
+                <div>
+                    <label class="form-label">Email Address</label>
+                    <input class="form_Email form-control">
+                    <label class="form-label">Primary</label>
+                    <select class="form_primary form-control">
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                    <label class="form-label">Type</label>
+                    <select class="form_type form-control">
+                        <option value="W">Work</option>
+                        <option value="P">Personal</option>
+                    </select>
+                    <br />
+                    <button id="emailButton_0" type="button" class="btn btn-success emailButton_0 newEmailButton">Add New</button>
+                </div>
+            </div>
+        </div>
+        @*As table*@
+        <div>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Primary</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (var email in Model.OrderByDescending(x => x.primary))
+                        {
+                            <tr id="emailBlock_@count">
+                                <td>
+                                    <div class="collapse">
+                                        <input class="form_ID" value="@email.ID" />
+                                        <input class="form_CreatedBy" value="@email.CreatedBy" />
+                                        <input class="form_CreateDate" value="@email.CreateDate" />
+                                    </div>
+                                    <input class="form_Email form-control" value="@email.emailaddress">
+                                </td>
+                                <td>
+                                    <select class="form_primary form-control">
+                                        <option value="@email.primary">@email.DisplayPrimary()</option>
+                                        <option value="Y">Yes</option>
+                                        <option value="N">No</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form_type form-control">
+                                        <option value="@email.type">@email.DisplayType()</option>
+                                        <option value="W">Work</option>
+                                        <option value="P">Personal</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button id="emailButton_@count" type="button" class="btn btn-success updateEmailButton w-100 mb-1">Update</button>
+                                    <button id="emailDeleteButton_@count" type="button" class="btn btn-danger deleteEmailButton w-100">Delete</button>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+                    <tr id="emailBlock_0">
+                        <td>
+                            <div class="collapse">
+                                <input id="newform_Id" class="form_ID" />
+                                <input id="newform_CreatedBy" class="form_CreatedBy" />
+                                <input id="newform_CreateDate" class="form_CreateDate" />
+                            </div>
+                            <input id="newform_Email" class="form_Email form-control" />
+                        </td>
+                        <td>
+                            <select id="newform_primary" class="form_primary form-control">
+                                <option value="Y">Yes</option>
+                                <option value="N">No</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="newform_type" class="form_type form-control">
+                                <option value="W">Work</option>
+                                <option value="P">Personal</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button id="emailButton_0" type="button" class="btn btn-success newEmailButton w-100">New</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".updateEmailButton").click(function(){
+            var card_id= this.id.split("_")[1]
+            $.ajax({
+                url: "../OiNao/Create/postEmailForm/",
+                data: {
+                    ID: $("#emailBlock_"+card_id+ " .form_ID").val(),
+                    OiNaoContactId: $("#ID").val(),
+                    CreatedBy:  $("#emailBlock_"+card_id+ " .form_CreatedBy").val(),
+                    CreateDate:  $("#emailBlock_"+card_id+ " .form_CreateDate").val(),
+                    primary:  $("#emailBlock_"+card_id+ " .form_primary").val(),
+                    emailaddress:  $("#emailBlock_"+card_id+ " .form_Email").val(),
+                    type:  $("#emailBlock_"+card_id+ " .form_type").val()
+                },
+                success:function(result){
+                    $("#miniFormBlock").html(result)
+                    resetContactTable()
+                }
+            })
+
+        })
+
+        $(".newEmailButton").click(function() {
+            $.ajax({
+                url: "../OiNao/Create/postEmailForm/",
+                data: {
+                    ID: 0,
+                    OiNaoContactId: $("#ID").val(),
+                    CreatedBy:  $("#newform_CreatedBy").val(),
+                    CreateDate:  $("#newform_CreateDate").val(),
+                    primary:  $("#newform_primary").val(),
+                    emailaddress:  $("#newform_Email").val(),
+                    type:  $("#newform_type").val()
+                },
+                success:function(result){
+                    $("#miniFormBlock").html(result)
+                    resetContactTable()
+                }
+            })
+        })
+    })
+</script>
